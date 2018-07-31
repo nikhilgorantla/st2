@@ -335,6 +335,8 @@ class ActionExecutionOutputController(ActionExecutionsControllerMixin, ResourceC
                 event = 'st2.execution.output__create'
                 result = 'event: %s\ndata: %s\n\n' % (event, json_encode(data, indent=None))
                 return result
+            else:
+                raise ValueError('Unsupported format: %s' % (output_format))
 
         def existing_output_iter():
             # Consume and return all of the existing lines
